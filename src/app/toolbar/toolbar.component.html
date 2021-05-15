@@ -1,12 +1,25 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
-        </button> -->
-        <span>Simple CRUD UI</span>
+        <button 
+            mat-icon-button 
+            matTooltip="Application Info"
+            matTooltipPosition="right" 
+            aria-label="Info"
+            (click)="openInfoDialog()">
+            <mat-icon>info</mat-icon>
+        </button>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with switch account">
-            <mat-icon>switch_account</mat-icon>
-        </button> 
+        <span>
+            Simple CRUD UI
+        </span>
+        <span class="example-spacer"></span>
+        <button 
+            mat-icon-button 
+            matTooltip="Switch view"
+            matTooltipPosition="left" 
+            aria-label="Switch view"
+            [routerLink]="getSwitchUrl()">
+            <mat-icon>swap_horiz</mat-icon>
+        </button>
     </mat-toolbar-row>
 </mat-toolbar>

@@ -10,11 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Components
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ToolbarComponent } from './toolbar/toolbar.component'; import { InfoDialog } from './toolbar/toolbar.component';
 import { ViewBasicComponent } from './view-basic/view-basic.component';
 import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
 
@@ -22,7 +24,7 @@ import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ToolbarComponent,
+    ToolbarComponent, InfoDialog,
     ViewBasicComponent,
     ViewAdvancedComponent
   ],
@@ -34,7 +36,9 @@ import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   exports: [
   
