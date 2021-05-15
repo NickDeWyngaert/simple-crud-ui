@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../movie';
+import { MovieService } from '../movie.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 
 @Component({
   selector: 'app-view-basic',
@@ -7,9 +11,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewBasicComponent implements OnInit {
 
-  constructor() { }
+  movies: Movie[] = [];
+  done: boolean = false;
+
+  constructor(
+    private service: MovieService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+    this.done = false;
+    this.setMovies();
+  }
+
+  private setMovies() {
+    this.service.getAll().subscribe({
+      next: movies => {
+        this.movies = movies;
+        this.done = true;
+      },
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    });
+  }
+
+  openMovie(id: any) {
+    let movie: Movie = <Movie>this.movies.find(m => m.id == Number(id)); 
+    this.dialog.open(MovieDetailComponent, {
+      data: movie,
+    });
   }
 
 }

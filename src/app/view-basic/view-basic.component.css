@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: calc(100vh - 20px);
+}
+
+.movie-item {
+    width: 182px;
+    height: 268px;
+    margin: 0.5em;
+}
+
+mat-toolbar {
+    justify-content: space-between;
+}

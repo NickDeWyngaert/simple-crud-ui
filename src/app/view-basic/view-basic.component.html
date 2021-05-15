@@ -1,1 +1,6 @@
-<p>Basic</p>
+<div *ngIf="!done" class="wrapper">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="done" fxLayout="row wrap">
+    <img *ngFor="let movie of movies" src="{{movie.imagelink}}" (click)="openMovie(movie.id)" class="movie-item">    
+</div>

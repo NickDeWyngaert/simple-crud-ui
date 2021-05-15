@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -13,6 +15,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 // Components
 import { AppComponent } from './app.component';
@@ -21,6 +25,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
   import { InfoDialog } from './toolbar/toolbar.component';
 import { ViewBasicComponent } from './view-basic/view-basic.component';
 import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +33,15 @@ import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
     PageNotFoundComponent,
     ToolbarComponent, InfoDialog,
     ViewBasicComponent,
-    ViewAdvancedComponent
+    ViewAdvancedComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -41,7 +49,9 @@ import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
     MatListModule,
     MatTooltipModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatCardModule
   ],
   exports: [
   
