@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,7 +12,8 @@ export class ToolbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -33,15 +35,21 @@ export class ToolbarComponent implements OnInit {
     return switchurl;
   }
 
+  showSwitchViewSnackbar(){
+    let newviewmode: String = "";
+    if(this.router.url == "/") newviewmode = "advanced"; else newviewmode = "basic";
+    this._snackBar.open("Changed view to " + newviewmode,"Close",{
+      duration: 4 * 1000,
+    });
+  }
+
   openInfoDialog() {
     const dialogRef = this.dialog.open(InfoDialog);
-    /* dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    }); */
   }
 
 }
 
+// Application Info Dialog
 @Component({
   selector: 'info-dialog',
   templateUrl: 'info-dialog.html',

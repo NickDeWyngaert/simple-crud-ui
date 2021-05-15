@@ -18,7 +18,8 @@
             matTooltip="Switch view"
             matTooltipPosition="left" 
             aria-label="Switch view"
-            [routerLink]="getSwitchUrl()">
+            [routerLink]="getSwitchUrl()"
+            (click)="showSwitchViewSnackbar()">
             <mat-icon>swap_horiz</mat-icon>
         </button>
     </mat-toolbar-row>
