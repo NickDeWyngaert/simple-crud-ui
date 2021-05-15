@@ -1,1 +1,48 @@
-<p>Advanced</p>
+<div *ngIf="!done" class="wrapper">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="done" fxLayout="row wrap">
+
+    <!-- https://material.angular.io/components/table/examples#table-expandable-rows -->
+    <table mat-table [dataSource]="movies" multiTemplateDataRows class="mat-elevation-z8">
+        
+        <!-- Only show columns that we want to show -->
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <td 
+                mat-cell 
+                *matCellDef="let element" 
+                [attr.colspan]="columnsToDisplay.length">
+                <div 
+                    class="example-element-detail" 
+                    [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <img src="{{element.imagelink}}">
+                    <div>
+                        <p style="margin: 0.5em;">
+                            {{element.about}}
+                        </p>
+                        <div style="margin: 0.5em;">
+                            <button mat-raised-button color="primary">Edit</button> 
+                            <button mat-raised-button color="warn" (click)="delete(element.id)" >Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row 
+            *matRowDef="let element; columns: columnsToDisplay;"
+            class="example-element-row"
+            [class.example-expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+
+</div>
