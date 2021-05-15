@@ -13,6 +13,7 @@ export class ViewBasicComponent implements OnInit {
 
   movies: Movie[] = [];
   done: boolean = false;
+  nomovies: boolean = true;
 
   constructor(
     private service: MovieService,
@@ -21,6 +22,7 @@ export class ViewBasicComponent implements OnInit {
 
   ngOnInit(): void {
     this.done = false;
+    this.nomovies = true;
     this.setMovies();
   }
 
@@ -29,6 +31,7 @@ export class ViewBasicComponent implements OnInit {
       next: movies => {
         this.movies = movies;
         this.done = true;
+        if(this.movies.length > 0) this.nomovies = false;
       },
       error: error => {
         console.error('There was an error!', error);

@@ -22,6 +22,7 @@ export class ViewAdvancedComponent implements OnInit {
   done: boolean = false;
   columnsToDisplay: string[] = ['title', 'director', 'genre', 'duration', 'release'];
   expandedElement: Movie | null = null;
+  nomovies: boolean = true;
 
   constructor(
     private service: MovieService,
@@ -30,6 +31,7 @@ export class ViewAdvancedComponent implements OnInit {
 
   ngOnInit(): void {
     this.done = false;
+    this.nomovies = true;
     this.setMovies();
   }
 
@@ -38,6 +40,7 @@ export class ViewAdvancedComponent implements OnInit {
       next: movies => {
         this.movies = movies;
         this.done = true;
+        if(this.movies.length > 0) this.nomovies = false;
       },
       error: error => {
         console.error('There was an error!', error);
