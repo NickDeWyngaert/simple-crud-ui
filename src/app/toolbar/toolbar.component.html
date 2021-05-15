@@ -15,6 +15,14 @@
         <span class="example-spacer"></span>
         <button 
             mat-icon-button 
+            matTooltip="Refresh Movies"
+            matTooltipPosition="below" 
+            aria-label="Refresh Movies"
+            (click)="reloadPage()">
+            <mat-icon>autorenew</mat-icon>
+        </button>
+        <button 
+            mat-icon-button 
             matTooltip="Switch view"
             matTooltipPosition="left" 
             aria-label="Switch view"

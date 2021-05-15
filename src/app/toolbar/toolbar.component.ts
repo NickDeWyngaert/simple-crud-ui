@@ -47,6 +47,10 @@ export class ToolbarComponent implements OnInit {
     const dialogRef = this.dialog.open(InfoDialog);
   }
 
+  reloadPage(){
+    window.location.reload();
+  }
+
 }
 
 // Application Info Dialog
