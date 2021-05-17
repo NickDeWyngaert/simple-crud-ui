@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MovieFormDialogComponent } from '../movie-form-dialog/movie-form-dialog.component';
+import { Movie } from '../movie';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,10 +13,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ToolbarComponent implements OnInit {
 
+  private snackbarDuration: number = 4 * 1000;
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private service: MovieService
   ) { }
 
   ngOnInit(): void {
@@ -35,18 +41,51 @@ export class ToolbarComponent implements OnInit {
     return switchurl;
   }
 
+  private openSnackBar(message: string) {
+    this._snackBar.open(message,"Close",{
+      duration: this.snackbarDuration,
+    });
+  }
+
+  // BUTTON => SWITCH VIEW
   showSwitchViewSnackbar(){
     let newviewmode: String = "";
     if(this.router.url == "/") newviewmode = "advanced"; else newviewmode = "basic";
     this._snackBar.open("Changed view to " + newviewmode,"Close",{
-      duration: 4 * 1000,
+      duration: this.snackbarDuration,
     });
   }
 
+  // BUTTON => INFO
   openInfoDialog() {
-    const dialogRef = this.dialog.open(InfoDialog);
+    this.dialog.open(InfoDialog);
   }
 
+  // BUTTON => ADD MOVIE
+  showAddMovieDialog(){
+    const dialogRef = this.dialog.open(MovieFormDialogComponent, {
+      data: new Movie()
+    });
+    dialogRef.afterClosed().subscribe(
+      data => this.addMovie(data)
+    );
+  }
+
+  private addMovie(movie: Movie){
+    console.log(movie);
+    this.service.create(movie).subscribe({
+      next: movie => {
+        this.openSnackBar("Created movie");
+        //this.reloadPage();
+      },
+      error: error => {
+        this.openSnackBar("Failed to create movie");
+        console.log(error);
+      }
+    });
+  }
+
+  // BUTTON => RELOAD
   reloadPage(){
     window.location.reload();
   }

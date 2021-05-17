@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>New movie</h2>
+<mat-dialog-content class="mat-typography" [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input 
+      matInput
+      type="text" 
+      placeholder=""
+      formControlName="title"
+      required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Genre</mat-label>
+    <input 
+      matInput 
+      type="text"
+      placeholder=""
+      formControlName="genre"
+      required>
+  </mat-form-field><br>
+  <mat-form-field appearance="fill">
+    <mat-label>Director</mat-label>
+    <input 
+      matInput 
+      type="text"
+      placeholder=""
+      formControlName="director"
+      required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Release</mat-label>
+    <input 
+      matInput 
+      type="date"
+      placeholder=""
+      formControlName="release"
+      required>
+  </mat-form-field><br>
+  <mat-form-field appearance="fill">
+    <mat-label>Duration</mat-label>
+    <input 
+      matInput 
+      type="number"
+      placeholder=""
+      formControlName="duration"
+      required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Image Link</mat-label>
+    <input 
+      matInput 
+      type="text"
+      placeholder=""
+      formControlName="imagelink"
+      required>
+  </mat-form-field><br>
+  <mat-form-field appearance="fill" style="width: 96%;">
+    <mat-label>About</mat-label>
+    <textarea 
+      matInput 
+      rows="3"
+      placeholder=""
+      formControlName="about"
+      required>
+    </textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close (click)="close()">Close</button>
+  <span class="example-spacer"></span>
+  <button class="mat-raised-button mat-primary" (click)="addMovie()">Add</button>
+</mat-dialog-actions>
