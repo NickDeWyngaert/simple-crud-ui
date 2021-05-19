@@ -1,3 +1,4 @@
+// Angular Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -5,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// My modules
 import { AppRoutingModule } from './app-routing.module';
 
 // Angular Material
@@ -25,8 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 // Components
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ToolbarComponent } from './toolbar/toolbar.component'; 
-  import { InfoDialog } from './toolbar/toolbar.component';
+import { ToolbarComponent, InfoDialog } from './toolbar/toolbar.component';
 import { ViewBasicComponent } from './view-basic/view-basic.component';
 import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';

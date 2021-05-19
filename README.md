@@ -3,7 +3,6 @@ A simple CRUD UI made with Angular
 
 * [Installation](#Installation)
 * [Usage](#Usage)
-    * [Features](#Features)
 
 ## Installation
 * Install Angular CLI: `npm install -g @angular/cli`
@@ -17,9 +16,3 @@ A simple CRUD UI made with Angular
 * This applications contains the user interface for an existing API
 * **This UI needs the API to work perfectly**
 * The API is located at [simple-crud-api](https://github.com/NickDeWyngaert/simple-crud-api)
-
-### Features
-* View mode
-    * Basic(`/basic`) and advanced(`/advanced`)
-    * Default: basic
-* *TBC*

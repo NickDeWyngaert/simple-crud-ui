@@ -28,15 +28,9 @@ export class ToolbarComponent implements OnInit {
   getSwitchUrl() {
     let switchurl: string = "";
     switch (this.router.url){
-      case '/': 
-        switchurl = "/advanced"; 
-        break;
-      case '/advanced': 
-        switchurl = "/basic"; 
-        break;
-      default:
-        switchurl = "/"; 
-        break;
+      case '/basic': switchurl = "/advanced"; break;
+      case '/advanced': switchurl = "/basic"; break;
+      default: switchurl = "/"; break;
     }
     return switchurl;
   }
@@ -51,9 +45,7 @@ export class ToolbarComponent implements OnInit {
   showSwitchViewSnackbar(){
     let newviewmode: String = "";
     if(this.router.url == "/") newviewmode = "advanced"; else newviewmode = "basic";
-    this._snackBar.open("Changed view to " + newviewmode,"Close",{
-      duration: this.snackbarDuration,
-    });
+    this.openSnackBar("Changed view to " + newviewmode);
   }
 
   // BUTTON => INFO
@@ -63,25 +55,8 @@ export class ToolbarComponent implements OnInit {
 
   // BUTTON => ADD MOVIE
   showAddMovieDialog(){
-    const dialogRef = this.dialog.open(MovieFormDialogComponent, {
+    this.dialog.open(MovieFormDialogComponent, {
       data: new Movie()
-    });
-    dialogRef.afterClosed().subscribe(
-      data => this.addMovie(data)
-    );
-  }
-
-  private addMovie(movie: Movie){
-    console.log(movie);
-    this.service.create(movie).subscribe({
-      next: movie => {
-        this.openSnackBar("Created movie");
-        //this.reloadPage();
-      },
-      error: error => {
-        this.openSnackBar("Failed to create movie");
-        console.log(error);
-      }
     });
   }
 

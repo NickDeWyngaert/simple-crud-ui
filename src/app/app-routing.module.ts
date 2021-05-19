@@ -6,14 +6,14 @@ import { ViewBasicComponent } from './view-basic/view-basic.component';
 import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
 
 const routes: Routes = [
-  { 
+  {
     path: '', 
-    component: ViewBasicComponent 
+    redirectTo: 'basic', 
+    pathMatch: 'full' 
   },
   {
     path: 'basic', 
-    redirectTo: '', 
-    pathMatch: 'full' 
+    component: ViewBasicComponent 
   },
   { 
     path: 'advanced', 
