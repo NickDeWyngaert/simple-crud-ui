@@ -20,7 +20,7 @@ export class ViewAdvancedComponent implements OnInit {
 
   movies: Movie[] = [];
   done: boolean = false;
-  columnsToDisplay: string[] = ['title', 'director', 'genre', 'duration', 'release'];
+  columnsToDisplay: string[] = ['id', 'title', 'director', 'genre', 'duration', 'release'];
   expandedElement: Movie | null = null;
   nomovies: boolean = true;
 

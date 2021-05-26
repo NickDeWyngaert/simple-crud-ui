@@ -44,7 +44,7 @@ export class ToolbarComponent implements OnInit {
   // BUTTON => SWITCH VIEW
   showSwitchViewSnackbar(){
     let newviewmode: String = "";
-    if(this.router.url == "/") newviewmode = "advanced"; else newviewmode = "basic";
+    if(this.router.url == "/basic") newviewmode = "advanced"; else newviewmode = "basic";
     this.openSnackBar("Changed view to " + newviewmode);
   }
 
