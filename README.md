@@ -1,7 +1,7 @@
 # Simple CRUD UI
 
 * [About](#About)
-* [Getting Started](#Getting%20Started)
+* [Getting Started](#Getting-Started)
     * [Prerequisites](#Prerequisites)
     * [Installation](#Installation)
 * [Usage](#Usage)
@@ -26,7 +26,7 @@ To get a local copy up and running follow these simple example steps.
 ### Installation
 1. Clone the repository
    ```sh
-   npm install npm@latest -g
+   git clone https://github.com/NickDeWyngaert/simple-crud-ui.git
    ```
 2. Change directory
    ```sh
