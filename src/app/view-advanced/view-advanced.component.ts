@@ -20,6 +20,7 @@ export class ViewAdvancedComponent implements OnInit {
 
   movies: Movie[] = [];
   done: boolean = false;
+  fetcherror: boolean = false;
   columnsToDisplay: string[] = ['id', 'title', 'director', 'genre', 'duration', 'release'];
   expandedElement: Movie | null = null;
   nomovies: boolean = true;
@@ -41,15 +42,17 @@ export class ViewAdvancedComponent implements OnInit {
         this.movies = movies;
         this.done = true;
         if(this.movies.length > 0) this.nomovies = false;
+        this.fetcherror = false;
       },
       error: error => {
-        console.error('There was an error!', error);
+        this.done = true;
+        this.fetcherror = true;
+        console.error('There while fetching the movies', error);
       }
     });
   }
 
   delete(id: number){
-    console.log("this");
     this.done = false;
     this.service.delete(id).subscribe(res => {
       this.setMovies();

@@ -1,9 +1,16 @@
+<!-- Movies not done with loading -->
 <div *ngIf="!done" class="wrapper">
     <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="done && nomovies">
+<!-- Movies done with loading but there is an error -->
+<div *ngIf="done && fetcherror">
+    <h1 style="margin: 0.5em;">There has been an error while fetching the movies</h1>
+</div>
+<!-- Movies done with loading there are no errors and there are 0 movies in the list -->
+<div *ngIf="done && !fetcherror  && nomovies">
     <h1 style="margin: 0.5em;">There are no movies available :(</h1>
 </div>
-<div *ngIf="done && !nomovies" fxLayout="row wrap">
+<!-- Movies done with loading there are no errors and there are multiple movies in the list -->
+<div *ngIf="done && !fetcherror && !nomovies" fxLayout="row wrap">
     <img *ngFor="let movie of movies" src="{{movie.imagelink}}" (click)="openMovie(movie.id)" class="movie-item">    
 </div>

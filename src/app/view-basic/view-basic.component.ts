@@ -13,6 +13,7 @@ export class ViewBasicComponent implements OnInit {
 
   movies: Movie[] = [];
   done: boolean = false;
+  fetcherror: boolean = false;
   nomovies: boolean = true;
 
   constructor(
@@ -32,9 +33,12 @@ export class ViewBasicComponent implements OnInit {
         this.movies = movies;
         this.done = true;
         if(this.movies.length > 0) this.nomovies = false;
+        this.fetcherror = false;
       },
       error: error => {
-        console.error('There was an error!', error);
+        this.done = true;
+        this.fetcherror = true;
+        console.error('There while fetching the movies', error);
       }
     });
   }
