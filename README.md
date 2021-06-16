@@ -5,6 +5,7 @@
     * [Prerequisites](#Prerequisites)
     * [Installation](#Installation)
 * [Usage](#Usage)
+* [To Do](#To-Do)
 
 ## About
 A simple CRUD UI made with Angular 11
@@ -15,13 +16,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
-* Angular CLI
-  ```sh
-  npm install -g @angular/cli
-  ```
+* Angular & Angular CLI
 
 ### Installation
 1. Clone the repository
@@ -43,5 +38,15 @@ To get a local copy up and running follow these simple example steps.
 
 ## Usage
 * This applications contains the user interface for an existing API
-* **This UI needs the API to work perfectly**
+* This UI needs the API to work perfectly
 * The API is located at [simple-crud-api](https://github.com/NickDeWyngaert/simple-crud-api)
+
+## To Do
+* General
+   - [ ] More UI friendly error message when ui failed to fetch movies
+   - [ ] More UI friendly add movie from (+ icon in toolbar)
+* Basic view
+   - [ ] Dynamic width and height for each movie item (movie img)
+* Advanced view
+   - [ ] Better datatable (with search, filtering, sorting, ...)
+   - [ ] More UI friendly expanded movie detail
