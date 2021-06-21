@@ -1,0 +1,13 @@
+.error-title {
+    margin-top: 2em;
+    font-size: 3em;
+}
+
+.error-code {
+    color: #696969;
+    font-size: 1.5em;
+}
+
+.error-back-button {
+    margin-top: 1.5em;
+}
