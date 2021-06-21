@@ -1,6 +1,7 @@
 # Simple CRUD UI
 
 * [About](#About)
+   * [Screenshots](#Screenshots)
 * [Getting Started](#Getting-Started)
     * [Prerequisites](#Prerequisites)
     * [Installation](#Installation)
@@ -9,7 +10,12 @@
 
 ## About
 A simple CRUD UI made with Angular 11
-![Simple CRUD UI](image.jpg)
+
+### Screenshots
+Basic view
+![Simple CRUD UI Basic View](screenshot-view-basic.jpg)
+Advanced view
+![Simple CRUD UI Advanced View](screenshot-view-advanced.jpg)
 
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
