@@ -25,6 +25,7 @@ To get a local copy up and running follow these simple example steps.
 * Angular & Angular CLI
 
 ### Installation
+0. Follow instructions from [simple-crud-api](https://github.com/NickDeWyngaert/simple-crud-api) repository to install & run the API
 1. Clone the repository
    ```sh
    git clone https://github.com/NickDeWyngaert/simple-crud-ui.git
