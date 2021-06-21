@@ -44,12 +44,13 @@ export class MovieFormDialogComponent implements OnInit {
       ]),
       duration: new FormControl('',[
         Validators.required, 
-        Validators.nullValidator
+        Validators.nullValidator,
+        Validators.min(1),
       ]),
       imagelink: new FormControl('',[
         Validators.required, 
         Validators.nullValidator,
-        Validators.pattern(this.urlRegex)
+        Validators.pattern(this.urlRegex),
       ]),
       about: new FormControl('',[
         Validators.required, 
