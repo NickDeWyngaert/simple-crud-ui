@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,44 +15,80 @@ export class MovieFormDialogComponent implements OnInit {
 
   form: FormGroup = this.fb.group({});
   private snackbarDuration: number = 4 * 1000;
+  private urlRegex = /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:.?+=&%@\-/]*)?$/;
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<MovieFormDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Movie,
     private _snackBar: MatSnackBar,
     private service: MovieService
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: ['', [Validators.required, Validators.nullValidator]],
-      genre: ['', [Validators.required, Validators.nullValidator]],
-      director: ['', [Validators.required, Validators.nullValidator]],
-      release: ['', [Validators.required, Validators.nullValidator]],
-      duration: ['', [Validators.required, Validators.nullValidator]],
-      imagelink: ['', [Validators.required, Validators.nullValidator]],
-      about: ['', [Validators.required, Validators.nullValidator]]
+      title: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator
+      ]),
+      genre: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator
+      ]),
+      director: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator
+      ]),
+      release: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator
+      ]),
+      duration: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator
+      ]),
+      imagelink: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator,
+        Validators.pattern(this.urlRegex)
+      ]),
+      about: new FormControl('',[
+        Validators.required, 
+        Validators.nullValidator
+      ]),
     });
   }
 
-  private openSnackBar(message: string) {
+  /* get title() { return this.form.get('title'); }
+  get genre() { return this.form.get('genre'); }
+  get director() { return this.form.get('director'); }
+  get release() { return this.form.get('release'); }
+  get duration() { return this.form.get('duration'); }
+  get imagelink() { return this.form.get('imagelink'); }
+  get about() { return this.form.get('about'); } */
+
+  private openSnackBar(message: string) : void {
     this._snackBar.open(message,"Close",{
       duration: this.snackbarDuration,
     });
   }
 
-  close() {
+  close() : void {
     this.dialogRef.close();
+  }
+
+  resetform() : void {
+    this.form.reset();
   }
 
   addMovie() {
     let movie: Movie = this.form.value;
-    if(movie != null){
+    if(movie == null) this.openSnackBar("You cannot create a empty movie :(");
+    else { 
       this.service.create(movie).subscribe({
         next: movie => {
-          this.openSnackBar("Created movie");
+          // this.openSnackBar("Created movie");
           this.dialogRef.close();
+          window.location.reload();
         },
         error: error => {
           this.openSnackBar("Failed to create movie");
@@ -60,9 +96,6 @@ export class MovieFormDialogComponent implements OnInit {
           this.dialogRef.close();
         }
       });
-    }
-    else { 
-      this.openSnackBar("You cannot create a empty movie :(");
     }
   }
 
