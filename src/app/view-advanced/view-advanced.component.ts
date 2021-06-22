@@ -64,7 +64,7 @@ export class ViewAdvancedComponent implements OnInit {
   delete(id: number): void {
     this.service.delete(id).subscribe(
       (response: void) => {
-        this.openSnackBar('Succesfully deleted movie with id ' + id);
+        this.openSnackBar('Successfully deleted movie with id ' + id);
         this.setMovies();
       },
       (error: HttpErrorResponse) => {
