@@ -4,6 +4,7 @@ import { MovieService } from '../movie.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-advanced',
@@ -25,10 +26,12 @@ export class ViewAdvancedComponent implements OnInit {
   columnsToDisplay: string[] = ['id', 'title', 'director', 'genre', 'duration', 'release'];
   expandedElement: Movie | null = null;
   nomovies: boolean = true;
+  private snackbarDuration: number = 4 * 1000;
 
   constructor(
     private service: MovieService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -61,12 +64,19 @@ export class ViewAdvancedComponent implements OnInit {
   delete(id: number): void {
     this.service.delete(id).subscribe(
       (response: void) => {
+        this.openSnackBar('Succesfully deleted movie with id ' + id);
         this.setMovies();
       },
       (error: HttpErrorResponse) => {
         console.error('Failed to delete movie with ID ' + id, error);
       }
     );
+  }
+
+  private openSnackBar(message: string): void {
+    this._snackBar.open(message,"Close",{
+      duration: this.snackbarDuration,
+    });
   }
 
 }
