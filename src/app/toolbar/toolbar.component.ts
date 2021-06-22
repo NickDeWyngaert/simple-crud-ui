@@ -4,7 +4,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieFormDialogComponent } from '../movie-form-dialog/movie-form-dialog.component';
 import { Movie } from '../movie';
-import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -18,8 +17,7 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar,
-    private service: MovieService
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -55,9 +53,7 @@ export class ToolbarComponent implements OnInit {
 
   // BUTTON => ADD MOVIE
   showAddMovieDialog(): void {
-    this.dialog.open(MovieFormDialogComponent, {
-      data: new Movie()
-    });
+    this.dialog.open(MovieFormDialogComponent);
   }
 
   // BUTTON => RELOAD
