@@ -25,7 +25,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getSwitchUrl() {
+  getSwitchUrl(): string {
     let switchurl: string = "";
     switch (this.router.url){
       case '/basic': switchurl = "/advanced"; break;
@@ -35,33 +35,33 @@ export class ToolbarComponent implements OnInit {
     return switchurl;
   }
 
-  private openSnackBar(message: string) {
+  private openSnackBar(message: string): void {
     this._snackBar.open(message,"Close",{
       duration: this.snackbarDuration,
     });
   }
 
   // BUTTON => SWITCH VIEW
-  showSwitchViewSnackbar(){
+  showSwitchViewSnackbar(): void {
     let newviewmode: String = "";
     if(this.router.url == "/basic") newviewmode = "advanced"; else newviewmode = "basic";
     this.openSnackBar("Changed view to " + newviewmode);
   }
 
   // BUTTON => INFO
-  openInfoDialog() {
+  openInfoDialog(): void {
     this.dialog.open(InfoDialog);
   }
 
   // BUTTON => ADD MOVIE
-  showAddMovieDialog(){
+  showAddMovieDialog(): void {
     this.dialog.open(MovieFormDialogComponent, {
       data: new Movie()
     });
   }
 
   // BUTTON => RELOAD
-  reloadPage(){
+  reloadPage(): void {
     window.location.reload();
   }
 

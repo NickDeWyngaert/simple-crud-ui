@@ -16,23 +16,23 @@ export class MovieService {
   ) { }
 
   getAll(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.resource);
+    return this.http.get<Movie[]>(`${this.resource}`);
   }
 
   get(id: number): Observable<Movie> {
-    return this.http.get<Movie>(this.resource + '/' + id);
+    return this.http.get<Movie>(`${this.resource}/${id}`);
   }
 
   create(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(this.resource, movie);
+    return this.http.post<Movie>(`${this.resource}`, movie);
   }
 
   update(id: number, movie: Movie): Observable<Movie> {
-    return this.http.put<Movie>(this.resource + "/" + id, movie);
+    return this.http.put<Movie>(`${this.resource}/${id}`, movie);
   }
 
-  delete(id: number) {
-    return this.http.delete(this.resource+ "/" + id);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.resource}/${id}`);
   }
 
 }

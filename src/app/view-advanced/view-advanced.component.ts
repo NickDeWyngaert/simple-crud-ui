@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
@@ -36,27 +37,32 @@ export class ViewAdvancedComponent implements OnInit {
     this.setMovies();
   }
 
-  private setMovies() {
-    this.service.getAll().subscribe({
-      next: movies => {
+  private setMovies(): void {
+    this.service.getAll().subscribe(
+      (movies: Movie[]) => {
         this.movies = movies;
         this.done = true;
         if(this.movies.length > 0) this.nomovies = false;
         this.fetcherror = false;
       },
-      error: error => {
+      (error: HttpErrorResponse) => {
         this.done = true;
         this.fetcherror = true;
         console.error('There while fetching the movies', error);
       }
-    });
+    );
   }
 
-  delete(id: number){
+  delete(id: number): void {
     this.done = false;
-    this.service.delete(id).subscribe(res => {
-      this.setMovies();
-    });
+    this.service.delete(id).subscribe(
+      (response: void) => {
+        this.setMovies();
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Failed to delete movie with ID ' + id, error);
+      }
+    );
   }
 
 }

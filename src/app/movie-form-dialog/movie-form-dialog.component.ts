@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-movie-form-dialog',
@@ -50,7 +51,7 @@ export class MovieFormDialogComponent implements OnInit {
       imagelink: new FormControl('',[
         Validators.required, 
         Validators.nullValidator,
-        Validators.pattern(this.urlRegex),
+        //Validators.pattern(this.urlRegex), // doesn't work anymore?
       ]),
       about: new FormControl('',[
         Validators.required, 
@@ -67,36 +68,36 @@ export class MovieFormDialogComponent implements OnInit {
   get imagelink() { return this.form.get('imagelink'); }
   get about() { return this.form.get('about'); }
 
-  private openSnackBar(message: string) : void {
+  private openSnackBar(message: string): void {
     this._snackBar.open(message,"Close",{
       duration: this.snackbarDuration,
     });
   }
 
-  close() : void {
+  close(): void {
     this.dialogRef.close();
   }
 
-  resetform() : void {
+  resetform(): void {
     this.form.reset();
   }
 
-  addMovie() {
+  addMovie(): void {
     let movie: Movie = this.form.value;
     if(movie == null) this.openSnackBar("You cannot create a empty movie :(");
-    else { 
-      this.service.create(movie).subscribe({
-        next: movie => {
+    else {
+      this.service.create(movie).subscribe(
+        (movie: Movie) => {
           // this.openSnackBar("Created movie");
           this.dialogRef.close();
           window.location.reload();
         },
-        error: error => {
+        (error: HttpErrorResponse) => {
           this.openSnackBar("Failed to create movie");
-          console.log(error);
+          console.log("Failed to create movie", error);
           this.dialogRef.close();
         }
-      });
+      );
     }
   }
 
