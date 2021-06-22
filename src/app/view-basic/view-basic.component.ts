@@ -51,4 +51,11 @@ export class ViewBasicComponent implements OnInit {
     });
   }
 
+  retry(): void {
+    this.done = false;
+    this.fetcherror = false;
+    this.nomovies = true;
+    this.setMovies();
+  }
+
 }

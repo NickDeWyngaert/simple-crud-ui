@@ -3,12 +3,26 @@
     <mat-spinner></mat-spinner>
 </div>
 <!-- Movies done with loading but there is an error -->
-<div *ngIf="done && fetcherror">
-    <h1 style="margin: 0.5em;">There has been an error while fetching the movies</h1>
+<div *ngIf="done && fetcherror" class="wrapper">
+    <h1 style="margin: 0.5em;">Something went wrong :( Try again</h1>
+    <button 
+        mat-flat-button
+        color="primary"
+        class="button-retry"
+        (click)="retry();">
+        <mat-icon>autorenew</mat-icon>
+    </button>
 </div>
 <!-- Movies done with loading there are no errors and there are 0 movies in the list -->
-<div *ngIf="done && !fetcherror  && nomovies">
-    <h1 style="margin: 0.5em;">There are no movies available :(</h1>
+<div *ngIf="done && !fetcherror && nomovies" class="wrapper">
+    <h1 style="margin: 0.5em;">No movies available</h1>
+    <button 
+        mat-flat-button
+        color="primary"
+        class="button-retry"
+        (click)="retry();">
+        <mat-icon>autorenew</mat-icon>
+    </button>
 </div>
 <!-- Movies done with loading there are no errors and there are multiple movies in the list -->
 <div *ngIf="done && !fetcherror && !nomovies" fxLayout="row wrap">

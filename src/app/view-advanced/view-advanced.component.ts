@@ -53,6 +53,13 @@ export class ViewAdvancedComponent implements OnInit {
     );
   }
 
+  retry(): void {
+    this.done = false;
+    this.fetcherror = false;
+    this.nomovies = true;
+    this.setMovies();
+  }
+
   delete(id: number): void {
     this.done = false;
     this.service.delete(id).subscribe(
