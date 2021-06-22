@@ -59,13 +59,13 @@ export class MovieFormDialogComponent implements OnInit {
     });
   }
 
-  /* get title() { return this.form.get('title'); }
+  get title() { return this.form.get('title'); }
   get genre() { return this.form.get('genre'); }
   get director() { return this.form.get('director'); }
   get release() { return this.form.get('release'); }
   get duration() { return this.form.get('duration'); }
   get imagelink() { return this.form.get('imagelink'); }
-  get about() { return this.form.get('about'); } */
+  get about() { return this.form.get('about'); }
 
   private openSnackBar(message: string) : void {
     this._snackBar.open(message,"Close",{

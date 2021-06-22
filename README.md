@@ -50,7 +50,6 @@ To get a local copy up and running follow these simple example steps.
 
 ## To Do
 * General
-   - [ ] More info when form field in new movie isn't good enough
 * Basic view
    - [ ] Dynamic width and height for each movie item (movie img)
 * Advanced view
