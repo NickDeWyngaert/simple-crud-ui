@@ -23,12 +23,13 @@ export class ViewBasicComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.done = false;
-    this.nomovies = true;
     this.setMovies();
   }
 
   private setMovies(): void {
+    this.done = false;
+    this.fetcherror = false;
+    this.nomovies = true;
     this.service.getAll().subscribe(
       (movies: Movie[]) => {
         this.movies = movies;
@@ -52,9 +53,6 @@ export class ViewBasicComponent implements OnInit {
   }
 
   retry(): void {
-    this.done = false;
-    this.fetcherror = false;
-    this.nomovies = true;
     this.setMovies();
   }
 

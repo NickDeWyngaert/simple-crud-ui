@@ -32,12 +32,13 @@ export class ViewAdvancedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.done = false;
-    this.nomovies = true;
     this.setMovies();
   }
 
   private setMovies(): void {
+    this.done = false;
+    this.fetcherror = false;
+    this.nomovies = true;
     this.service.getAll().subscribe(
       (movies: Movie[]) => {
         this.movies = movies;
@@ -54,14 +55,10 @@ export class ViewAdvancedComponent implements OnInit {
   }
 
   retry(): void {
-    this.done = false;
-    this.fetcherror = false;
-    this.nomovies = true;
     this.setMovies();
   }
 
   delete(id: number): void {
-    this.done = false;
     this.service.delete(id).subscribe(
       (response: void) => {
         this.setMovies();
