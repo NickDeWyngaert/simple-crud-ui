@@ -51,7 +51,7 @@
                             {{element.about}}
                         </p>
                         <div style="margin: 0.5em;">
-                            <button mat-raised-button color="primary">Edit</button> 
+                            <button mat-raised-button color="primary" (click)="edit(element.id)">Edit</button> 
                             <button mat-raised-button color="warn" (click)="delete(element.id)" >Delete</button>
                         </div>
                     </div>

@@ -55,4 +55,3 @@ To get a local copy up and running follow these simple example steps.
 * Advanced view
    - [ ] Better datatable (with search, filtering, sorting, ...)
    - [ ] More UI friendly expanded movie detail
-   - [ ] Edit/Update movie

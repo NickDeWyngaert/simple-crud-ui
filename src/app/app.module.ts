@@ -32,6 +32,7 @@ import { ViewBasicComponent } from './view-basic/view-basic.component';
 import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieFormNewComponent } from './movie-form-new/movie-form-new.component';
+import { MovieFormEditComponent } from './movie-form-edit/movie-form-edit.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MovieFormNewComponent } from './movie-form-new/movie-form-new.component
     ViewAdvancedComponent,
     MovieDetailComponent,
     MovieFormNewComponent,
+    MovieFormEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MovieFormEditComponent } from '../movie-form-edit/movie-form-edit.component';
 
 @Component({
   selector: 'app-view-advanced',
@@ -76,6 +77,18 @@ export class ViewAdvancedComponent implements OnInit {
   private openSnackBar(message: string): void {
     this._snackBar.open(message,"Close",{
       duration: this.snackbarDuration,
+    });
+  }
+
+  edit(id: number): void {
+    let dialogRef = this.dialog.open(MovieFormEditComponent, {
+      data: id,
+    });
+    dialogRef.afterClosed().subscribe(message => {
+      if(message != null) {
+        this.setMovies();
+        this.openSnackBar(message);
+      }
     });
   }
 
