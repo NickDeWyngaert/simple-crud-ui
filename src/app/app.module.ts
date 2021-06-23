@@ -31,7 +31,7 @@ import { ToolbarComponent, InfoDialog } from './toolbar/toolbar.component';
 import { ViewBasicComponent } from './view-basic/view-basic.component';
 import { ViewAdvancedComponent } from './view-advanced/view-advanced.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { MovieFormDialogComponent } from './movie-form-dialog/movie-form-dialog.component';
+import { MovieFormNewComponent } from './movie-form-new/movie-form-new.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { MovieFormDialogComponent } from './movie-form-dialog/movie-form-dialog.
     ViewBasicComponent,
     ViewAdvancedComponent,
     MovieDetailComponent,
-    MovieFormDialogComponent,
+    MovieFormNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +72,7 @@ import { MovieFormDialogComponent } from './movie-form-dialog/movie-form-dialog.
 
   ],
   entryComponents: [
-    MovieFormDialogComponent,
+    
   ],
   bootstrap: [AppComponent]
 })

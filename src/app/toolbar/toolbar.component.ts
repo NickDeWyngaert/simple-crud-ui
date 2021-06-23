@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MovieFormDialogComponent } from '../movie-form-dialog/movie-form-dialog.component';
+import { MovieFormNewComponent } from '../movie-form-new/movie-form-new.component'
 import { Movie } from '../movie';
 
 @Component({
@@ -53,7 +53,7 @@ export class ToolbarComponent implements OnInit {
 
   // BUTTON => ADD MOVIE
   showAddMovieDialog(): void {
-    this.dialog.open(MovieFormDialogComponent);
+    this.dialog.open(MovieFormNewComponent);
   }
 
   // BUTTON => RELOAD

@@ -8,19 +8,18 @@ import { MovieService } from '../movie.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-movie-form-dialog',
-  templateUrl: './movie-form-dialog.component.html',
-  styleUrls: ['./movie-form-dialog.component.css']
+  selector: 'app-movie-form-new',
+  templateUrl: './movie-form-new.component.html',
+  styleUrls: ['./movie-form-new.component.css']
 })
-export class MovieFormDialogComponent implements OnInit {
-
+export class MovieFormNewComponent implements OnInit {
   form: FormGroup = this.fb.group({});
   private snackbarDuration: number = 4 * 1000;
   private urlRegex = /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:.?+=&%@\-/]*)?$/;
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<MovieFormDialogComponent>,
+    private dialogRef: MatDialogRef<MovieFormNewComponent>,
     private _snackBar: MatSnackBar,
     private service: MovieService
   ) {}
