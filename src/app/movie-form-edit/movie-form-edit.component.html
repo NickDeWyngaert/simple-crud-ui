@@ -9,39 +9,39 @@
     <mat-dialog-content class="mat-typography">
         <form [formGroup]="form">
             <mat-form-field appearance="fill">
-            <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" required placeholder="">
-            <mat-error *ngIf="title && title.touched && title.invalid">Title is invalid</mat-error>
+                <mat-label>Title</mat-label>
+                <input matInput type="text" formControlName="title" required placeholder="">
+                <mat-error *ngIf="title && title.touched && title.invalid">Title is invalid</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
-            <mat-label>Genre</mat-label>
-            <input matInput type="text" formControlName="genre" required placeholder="">
-            <mat-error *ngIf="genre && genre.touched && genre.invalid">Genre is invalid</mat-error>
+                <mat-label>Genre</mat-label>
+                <input matInput type="text" formControlName="genre" required placeholder="">
+                <mat-error *ngIf="genre && genre.touched && genre.invalid">Genre is invalid</mat-error>
             </mat-form-field><br>
             <mat-form-field appearance="fill">
-            <mat-label>Director</mat-label>
-            <input matInput type="text" formControlName="director" required placeholder="">
-            <mat-error *ngIf="director && director.touched && director.invalid">Director is invalid</mat-error>
+                <mat-label>Director</mat-label>
+                <input matInput type="text" formControlName="director" required placeholder="">
+                <mat-error *ngIf="director && director.touched && director.invalid">Director is invalid</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
-            <mat-label>Release</mat-label>
-            <input matInput type="date" formControlName="release" required placeholder="">
-            <mat-error *ngIf="release && release.touched && release.invalid">Release is invalid</mat-error>
+                <mat-label>Release</mat-label>
+                <input matInput type="date" formControlName="release" required placeholder="">
+                <mat-error *ngIf="release && release.touched && release.invalid">Release is invalid</mat-error>
             </mat-form-field><br>
             <mat-form-field appearance="fill">
-            <mat-label>Duration</mat-label>
-            <input matInput type="number" formControlName="duration" required placeholder="">
-            <mat-error *ngIf="duration && duration.touched && duration.invalid">Duration is invalid</mat-error>
+                <mat-label>Duration</mat-label>
+                <input matInput type="number" formControlName="duration" required placeholder="">
+                <mat-error *ngIf="duration && duration.touched && duration.invalid">Duration is invalid</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
-            <mat-label>Image Link</mat-label>
-            <input matInput type="text" formControlName="imagelink" required placeholder="">
-            <mat-error *ngIf="imagelink && imagelink.touched && imagelink.invalid">Image link is invalid</mat-error>
+                <mat-label>Image Link</mat-label>
+                <input matInput type="text" formControlName="imagelink" required placeholder="">
+                <mat-error *ngIf="imagelink && imagelink.touched && imagelink.invalid">Image link is invalid</mat-error>
             </mat-form-field><br>
             <mat-form-field appearance="fill" style="width: 96%;">
-            <mat-label>About</mat-label>
-            <textarea matInput rows="3" formControlName="about" required placeholder=""></textarea>
-            <mat-error *ngIf="about && about.touched && about.invalid">About is invalid</mat-error>
+                <mat-label>About</mat-label>
+                <textarea matInput rows="3" formControlName="about" required placeholder=""></textarea>
+                <mat-error *ngIf="about && about.touched && about.invalid">About is invalid</mat-error>
             </mat-form-field>
         </form>
     </mat-dialog-content>
