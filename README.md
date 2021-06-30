@@ -50,8 +50,9 @@ To get a local copy up and running follow these simple example steps.
 
 ## To Do
 * General
-   - [ ] Remove reload icon from toolbar and integrate it in both view's
-   - [ ] After create, delete or update do not reload all movies (to avoid the wierd reload) but create, delete or update the local list
+   - [ ] Unnecessary reload after reload or CRUD operations
+      - Reload icon in toolbar reloads the page when it should only call the setMovies functions
+      - After create, delete or update do not reload all movies (to avoid the wierd reload) but create, delete or update the local list
 * Basic view
    - [ ] Dynamic width and height for each movie item (movie img)
 * Advanced view
