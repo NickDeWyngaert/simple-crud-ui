@@ -86,12 +86,15 @@ export class ViewAdvancedComponent implements OnInit {
     let dialogRef = this.dialog.open(MovieFormEditComponent, {
       data: id,
     });
-    dialogRef.afterClosed().subscribe(message => {
-      if(message != null) {
+    // null => normal close of dialog
+    // object = { succes: boolean, message: string }
+    dialogRef.afterClosed().subscribe(
+      (nil: null) => { /* Do nothing (normal dialog close) */},
+      (object: {succes: boolean, message: string}) => {
         this.setMovies();
-        this.openSnackBar(message);
+        this.openSnackBar(object.message);
       }
-    });
+    );
   }
 
 }

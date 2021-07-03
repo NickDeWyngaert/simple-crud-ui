@@ -87,11 +87,15 @@ export class MovieFormEditComponent implements OnInit {
   }
 
   close(): void {
-    this.closeWithMessage(null);
+    this.closeBooleanWithMessage(null);
   }
 
-  private closeWithMessage(message: String | null): void {
-    this.dialogRef.close(message);
+  /*
+    object { succes: boolean, message: string }
+    null => nothing happened
+  */
+  private closeBooleanWithMessage(object: {succes: boolean | null, message: string} | null): void {
+    this.dialogRef.close(object);
   }
 
   editMovie(): void {
@@ -99,11 +103,17 @@ export class MovieFormEditComponent implements OnInit {
     let updatedMovieWithId: Movie = this.mergeMovieWithId(updatedMovieWithoutId);
     this.service.update(this.data, updatedMovieWithId).subscribe(
       (movie: Movie) => {
-        this.closeWithMessage('Succesfully updated movie');
+        this.closeBooleanWithMessage({
+          succes: true, 
+          message: 'Succesfully updated movie'
+        });
       },
       (error: HttpErrorResponse) => {
         console.error('Something went wrong with updating movie with id ' + this.data, error);
-        this.closeWithMessage('Failed to update movie');
+        this.closeBooleanWithMessage({
+          succes: false, 
+          message: 'Failed to update movie'
+        });
       }
     );
   }
