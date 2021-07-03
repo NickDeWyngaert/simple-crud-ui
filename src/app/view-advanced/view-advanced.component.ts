@@ -69,7 +69,9 @@ export class ViewAdvancedComponent implements OnInit {
         this.setMovies();
       },
       (error: HttpErrorResponse) => {
-        console.error('Failed to delete movie with ID ' + id, error);
+        let message: string = 'Failed to delete movie with ID ' + id;
+        this.openSnackBar(message);
+        console.error(message, error);
       }
     );
   }
