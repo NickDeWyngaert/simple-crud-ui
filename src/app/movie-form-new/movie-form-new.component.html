@@ -43,7 +43,7 @@
 <mat-dialog-actions align="center">
   <button mat-button mat-dialog-close (click)="close()">Close</button>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="mat-raised-button mat-primary" [disabled]="form.invalid" (click)="addMovie()">
+  <button mat-icon-button class="mat-raised-button mat-primary" [disabled]="form.invalid || !form.touched" (click)="addMovie()">
     <mat-icon>add</mat-icon>
   </button>
   <span class="example-spacer"></span>
